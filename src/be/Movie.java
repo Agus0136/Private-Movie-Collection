@@ -33,13 +33,9 @@ public class Movie {
         this.title = title;
     }
 
-    public String getCategory(){
-        return category;
-    }
+    public String getCategory() { return category; }
 
-    public void setCategory(String category){
-        this.category = category;
-    }
+    public void setCategory(String category) { this.category = category; }
 
     public float getRating(){
         return rating;
@@ -53,7 +49,9 @@ public class Movie {
         return location;
     }
 
-    public void setLocation(String location){ this.location = location; }
+    public void setLocation(String location){
+        this.location = location;
+    }
 
     public String getLastView(){
         return lastView;
