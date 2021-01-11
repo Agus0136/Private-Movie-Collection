@@ -1,17 +1,26 @@
 package be;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Movie {
+
     private int id;
     private String title;
-    private String category;
+
+    private List<Category> allCategories;
+
     private float rating;
     private String location;
     private String lastView;
 
-    public Movie(int id, String title, String category, float rating, String location, String lastView){
+    public Movie(int id, String title, List Category, float rating, String location, String lastView){
         this.id = id;
         this.title = title;
-        this.category = category;
+
+        allCategories = new ArrayList<>();
+        this.allCategories = Category;
+
         this.rating = rating;
         this.location = location;
         this.lastView = lastView;
@@ -33,9 +42,13 @@ public class Movie {
         this.title = title;
     }
 
-    public String getCategory() { return category; }
+    public List<Category> getCategory() {
+        return allCategories;
+    }
 
-    public void setCategory(String category) { this.category = category; }
+    public void setAllCategories(List<Category> allCategories) {
+        this.allCategories = allCategories;
+    }
 
     public float getRating(){
         return rating;
