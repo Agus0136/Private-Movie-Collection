@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller.MainController">
     <children>
-        <Label layoutX="206.0" layoutY="33.0" prefHeight="25.0" prefWidth="328.0" text="                         - None is currently playing -" />
+        <Label fx:id="playingMovieLabel" layoutX="206.0" layoutY="33.0" prefHeight="25.0" prefWidth="328.0" text="                         - None is currently playing -" />
         <HBox layoutX="543.0" layoutY="14.0" prefHeight="31.0" prefWidth="148.0">
             <children>
                 <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="🔍" />
@@ -23,41 +23,41 @@
         <Label layoutX="606.0" layoutY="47.0" prefHeight="17.0" prefWidth="37.0" text="Search" />
         <HBox layoutX="27.0" layoutY="14.0" prefHeight="25.0" prefWidth="175.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="◀◀" />
-                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" text="▶" />
-                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="▶▶" />
+                <Button mnemonicParsing="false" onAction="#backButton" prefHeight="25.0" prefWidth="53.0" text="◀◀" />
+                <Button fx:id="playButton" mnemonicParsing="false" onAction="#playMovie" prefHeight="25.0" prefWidth="59.0" text="▶" />
+                <Button mnemonicParsing="false" onAction="#forwardButton" prefHeight="25.0" prefWidth="55.0" text="▶▶" />
             </children>
         </HBox>
-        <Slider layoutX="38.0" layoutY="52.0" />
+        <Slider fx:id="volume" layoutX="38.0" layoutY="52.0" />
         <Label layoutX="178.0" layoutY="51.0" prefHeight="17.0" prefWidth="15.0" text="🔊" />
         <HBox layoutX="41.0" layoutY="72.0" prefHeight="440.0" prefWidth="649.0">
             <children>
                 <VBox prefHeight="429.0" prefWidth="641.0">
                     <children>
-                        <Label prefHeight="25.0" prefWidth="641.0" text="                                                                                        Movie List" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Refresh" />
+                        <Label fx:id="movieLabel" prefHeight="25.0" prefWidth="641.0" text="                                                                                        Movie List" />
+                        <Button mnemonicParsing="false" onAction="#refreshMovie" prefHeight="25.0" prefWidth="60.0" text="Refresh" />
                     </children>
                 </VBox>
             </children>
         </HBox>
         <HBox layoutX="40.0" layoutY="130.0" prefHeight="383.0" prefWidth="649.0">
             <children>
-                <TableView prefHeight="391.0" prefWidth="643.0">
+                <TableView fx:id="IstMovies" prefHeight="391.0" prefWidth="643.0">
                     <columns>
-                        <TableColumn prefWidth="274.0" text="Title" />
-                        <TableColumn minWidth="1.0" prefWidth="45.0" text="Time" />
-                        <TableColumn prefWidth="70.0" text="Category" />
-                        <TableColumn prefWidth="82.0" text="My Rating" />
-                        <TableColumn prefWidth="85.0" text="Play Count" />
-                        <TableColumn prefWidth="86.0" text="Last Played" />
+                        <TableColumn fx:id="Title" prefWidth="274.0" text="Title" />
+                        <TableColumn fx:id="Time" minWidth="1.0" prefWidth="45.0" text="Time" />
+                        <TableColumn fx:id="Category" prefWidth="70.0" text="Category" />
+                        <TableColumn fx:id="myRating" prefWidth="82.0" text="My Rating" />
+                        <TableColumn fx:id="playCount" prefWidth="85.0" text="Play Count" />
+                        <TableColumn fx:id="lastPlayed" prefWidth="86.0" text="Last Played" />
                     </columns>
                 </TableView>
             </children>
         </HBox>
         <HBox layoutX="39.0" layoutY="519.0" prefHeight="31.0" prefWidth="641.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Add Movie" />
-                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Delete Movie">
+                <Button mnemonicParsing="false" onAction="#newMovie" prefHeight="25.0" prefWidth="79.0" text="Add Movie" />
+                <Button mnemonicParsing="false" onAction="#deleteMovie" prefHeight="25.0" prefWidth="89.0" text="Delete Movie">
                     <HBox.margin>
                         <Insets left="20.0" />
                     </HBox.margin>
@@ -65,6 +65,11 @@
                         <Insets />
                     </opaqueInsets>
                 </Button>
+            <Button mnemonicParsing="false" onAction="#setExit" text="Close">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </Button>
             </children>
         </HBox>
     </children>
