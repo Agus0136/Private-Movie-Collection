@@ -1,29 +1,24 @@
 package be;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Movie {
-
     private int id;
     private String title;
-
-    private List<Category> allCategories;
-
-    private float rating;
+    private int playTime;
+    private String category;
+    private float myRating;
     private String location;
-    private String lastView;
+    private String playCount;
+    private String lastPlayed;
 
-    public Movie(int id, String title, List Category, float rating, String location, String lastView){
+    public Movie(int id, String title, int playTime, String category, float myRating, String location, String playCount, String lastPlayed){
         this.id = id;
         this.title = title;
-
-        allCategories = new ArrayList<>();
-        this.allCategories = Category;
-
-        this.rating = rating;
+        this.playTime = playTime;
+        this.category = category;
+        this.myRating = myRating;
         this.location = location;
-        this.lastView = lastView;
+        this.playCount = playCount;
+        this.lastPlayed = lastPlayed;
     }
 
     public int getId(){
@@ -42,20 +37,24 @@ public class Movie {
         this.title = title;
     }
 
-    public List<Category> getCategory() {
-        return allCategories;
+    public int getPlayTime(){
+        return playTime;
     }
 
-    public void setAllCategories(List<Category> allCategories) {
-        this.allCategories = allCategories;
+    public void setPlayTime(int playTime){
+        this.playTime = playTime;
     }
 
-    public float getRating(){
-        return rating;
+    public String getCategory() { return category; }
+
+    public void setCategory(String category) { this.category = category; }
+
+    public float getMyRating(){
+        return myRating;
     }
 
-    public void setRating(float rating){
-        this.rating = rating;
+    public void setMyRating(float myRating){
+        this.myRating = myRating;
     }
 
     public String getLocation(){
@@ -66,16 +65,42 @@ public class Movie {
         this.location = location;
     }
 
-    public String getLastView(){
-        return lastView;
+    public String getPlayCount(){
+        return playCount;
     }
 
-    public void setLastView(String lastView){
-        this.lastView = lastView;
+    public void setPlayCount(String playCount){
+        this.playCount = playCount;
+    }
+
+    public String getLastPlayed(){
+        return lastPlayed;
+    }
+
+    public void setLastPlayed(String lastPlayed){
+        this.lastPlayed = lastPlayed;
     }
 
     @Override
     public String toString() {
         return getTitle();
+    }
+
+    public String getPlaytimeString() {
+        String minutesString;
+        String secondString;
+        int minutes = playTime / 60;
+        if (minutes < 10) {
+            minutesString = "0" + minutes;
+        } else {
+            minutesString = "" + minutes;
+        }
+        int seconds = playTime % 60;
+        if (10 > seconds) {
+            secondString = "0" + seconds;
+        } else {
+            secondString = "" + seconds;
+        }
+        return minutesString + ":" + secondString;
     }
 }
